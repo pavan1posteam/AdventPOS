@@ -32,7 +32,7 @@ namespace AdventPos
                                 Console.WriteLine("StoreId: " + current.StoreSettings.StoreId);
                                 CsvProducts clsAdventApi = new CsvProducts(current.StoreSettings.StoreId, current.StoreSettings.POSSettings.tax, current.StoreSettings.POSSettings.BaseUrl, current.StoreSettings.POSSettings.Username, current.StoreSettings.POSSettings.Password, current.StoreSettings.POSSettings.Pin, current.StoreSettings.POSSettings.IsMarkUpPrice, current.StoreSettings.POSSettings.MarkUpValue);
                                 Console.WriteLine();
-                            }//tested again for Advent git fail issues
+                            }
                         }
                     }
                     catch (Exception ex)
