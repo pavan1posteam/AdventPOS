@@ -20,6 +20,8 @@ namespace AdventPos
     public class clsAdventPos
     {
         string DeveloperId = ConfigurationManager.AppSettings["DeveloperId"];
+        
+
         public List<Datum> products(int StoreId, decimal tax, string BaseUrl, string Username, string Password, string Pin)
         {
 
@@ -75,6 +77,7 @@ namespace AdventPos
         string DeveloperId = ConfigurationManager.AppSettings["DeveloperId"];
         string prcFromPrcA = ConfigurationManager.AppSettings["PriceFromPriceA"];
         string DifferentResponce = ConfigurationManager.AppSettings["DifferentResponce"];
+        string staticQtyStores = ConfigurationManager.AppSettings["StaticQtyStores"];
         public CsvProducts(int storeid, decimal tax, string BaseUrl, string Username, string Password, string Pin, bool IsMarkUpPrice, int MarkUpValue)
         {
             productForCSV(storeid, tax, BaseUrl, Username, Password, Pin, IsMarkUpPrice, MarkUpValue);
@@ -109,8 +112,35 @@ namespace AdventPos
                             else
                                 pdf.upc = upc;
                             pdf.sku = item.Sku;
-                            decimal qty = Convert.ToDecimal(item.TotalQty);
-                            pdf.Qty = Convert.ToInt32(qty) > 0 ? Convert.ToInt32(qty) : 0;
+                            #region old qty logic 
+                            //decimal qty = Convert.ToDecimal(item.TotalQty);
+                            //pdf.Qty = Convert.ToInt32(qty) > 0 ? Convert.ToInt32(qty) : 0;
+                            #endregion
+
+                            
+//new quantity logic 
+                            int quantity = Convert.ToInt32(item.TotalQty);
+
+                            if (staticQtyStores.Contains(storeid.ToString()))
+                            {
+                                if (storeid == 12710)
+                                {
+                                    // if qty <= 0 → static 999
+                                    // if qty > 0 → actual qty
+                                    pdf.Qty = quantity <= 0 ? 999 : quantity;
+                                }
+                                else
+                                {
+                                    // for all other stores in static config
+                                    pdf.Qty = 999;
+                                }
+                            }
+                            else
+                            {
+                                // normal behavior
+                                pdf.Qty = quantity > 0 ? quantity : 0;
+                            }
+
                             pdf.pack = item.PackName;
                             if (storeid == 11858 && pdf.pack == "18" || pdf.pack == "24" || pdf.pack == "30")
                                 continue;
