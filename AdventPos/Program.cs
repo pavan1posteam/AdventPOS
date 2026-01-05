@@ -19,14 +19,14 @@ namespace AdventPos
                 {
                     try
                     {
-                        //if (current.StoreSettings.StoreId == 12810)
-                        //{
-
-                        //}
-                        //else
-                        //{
-                        //    continue;
-                        //}
+                        /*if (current.StoreSettings.StoreId == 12342)
+                        {
+                            Console.WriteLine("Fetching the store_id " + current.StoreSettings.StoreId); 
+                        }
+                        else
+                        {
+                            continue;
+                        }*/
                         if (current.PosName.ToUpper() == "ADVENTPOS" && current.StoreSettings.POSSettings != null)
                         {
                             if (FlatFile.Contains(current.StoreSettings.StoreId.ToString()))
