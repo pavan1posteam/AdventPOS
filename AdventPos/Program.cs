@@ -19,7 +19,7 @@ namespace AdventPos
                 {
                     try
                     {
-                        /*if (current.StoreSettings.StoreId == 12342)
+                        /*if (current.StoreSettings.StoreId == 12457)
                         {
                             Console.WriteLine("Fetching the store_id " + current.StoreSettings.StoreId); 
                         }
