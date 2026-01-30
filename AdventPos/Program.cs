@@ -8,7 +8,7 @@ namespace AdventPos
     {
         private static void Main(string[] args)
         {
-
+            Console.Title = "AdventPOS";
             string DeveloperId = ConfigurationManager.AppSettings["DeveloperId"];
             string FlatFile = ConfigurationManager.AppSettings["FlatFile"];
             try
@@ -19,9 +19,9 @@ namespace AdventPos
                 {
                     try
                     {
-                        /*if (current.StoreSettings.StoreId == 12457)
+                        /*if (current.StoreSettings.StoreId == 11227)
                         {
-                            Console.WriteLine("Fetching the store_id " + current.StoreSettings.StoreId); 
+                            
                         }
                         else
                         {
@@ -38,7 +38,7 @@ namespace AdventPos
                             else if(!string.IsNullOrEmpty(current.StoreSettings.POSSettings.BaseUrl))
                             {
                                 Console.WriteLine("StoreId: " + current.StoreSettings.StoreId);
-                                CsvProducts clsAdventApi = new CsvProducts(current.StoreSettings.StoreId, current.StoreSettings.POSSettings.tax, current.StoreSettings.POSSettings.BaseUrl, current.StoreSettings.POSSettings.Username, current.StoreSettings.POSSettings.Password, current.StoreSettings.POSSettings.Pin, current.StoreSettings.POSSettings.IsMarkUpPrice, current.StoreSettings.POSSettings.MarkUpValue);
+                                clsAdventPos clsAdventApi = new clsAdventPos(current.StoreSettings.StoreId, current.StoreSettings.POSSettings.tax, current.StoreSettings.POSSettings.BaseUrl, current.StoreSettings.POSSettings.Username, current.StoreSettings.POSSettings.Password, current.StoreSettings.POSSettings.Pin, current.StoreSettings.POSSettings.IsMarkUpPrice, current.StoreSettings.POSSettings.MarkUpValue);
                                 Console.WriteLine();
                             }
                         }

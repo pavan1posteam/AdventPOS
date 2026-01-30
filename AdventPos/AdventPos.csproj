@@ -70,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAdventPos.cs" />
+    <Compile Include="clsAdventPos_Flatfile.cs" />
+    <Compile Include="Datatabletocsv.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Models\clsFullnameModel.cs" />
     <Compile Include="Models\FullNameProductModel.cs" />
